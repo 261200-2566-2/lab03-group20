@@ -1,17 +1,30 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        RPGCharacter character = new RPGCharacter(1);
+        System.out.println("Character level: " + character.getLevel());
+        System.out.println("Character max HP: " + character.getMaxHP());
+        System.out.println("Character mana: " + character.getMana());
+        System.out.println("Character run speed: " + character.getRunSpeed());
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Equipments equipments = new Equipments();
+        equipments.EquippedSword(character);
+        character.setEquip(equipments);
+        System.out.println("Character has sword equipped: " + character.getEquip().isEquippedSword());
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        equipments.EquippedShield(character);
+        character.setEquip(equipments);
+        System.out.println("Character has shield equipped: " + character.getEquip().isEquippedShield());
+
+        RPGCharacter enemy = new RPGCharacter(2);
+        System.out.println("Enemy level: " + enemy.getLevel());
+        System.out.println("Enemy max HP: " + enemy.getMaxHP());
+        System.out.println("Enemy run speed: " + enemy.getRunSpeed());
+
+        character.useSword(enemy);
+        System.out.println("Enemy max HP after attack: " + enemy.getMaxHP());
+        character.levelup();
+        System.out.println("Character level: " + character.getLevel());
+
+
     }
 }
